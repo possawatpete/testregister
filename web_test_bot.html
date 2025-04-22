@@ -1,0 +1,180 @@
+<html lang="th"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for better visibility */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .button {
+            display: block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            /* Transition effect */
+        }
+
+        .button.disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        .clicked {
+            background-color: #28a745;
+            /* สีใหม่เมื่อคลิก */
+        }
+
+        .hidden {
+            display: none;
+            /* ซ่อนปุ่ม */
+        }
+
+        .button-group {
+            margin: 10px 0;
+        }
+
+        .summary {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- พื้นที่แสดงผล -->
+    <div class="summary" id="summaryText"></div>
+    <h1>Test Rocket</h1>
+
+    <div>
+        <button class="button" id="register">Register</button>
+
+        <!-- เพิ่มปุ่มสาขา 5 สาขา -->
+        <div class="button-group hidden" id="branchButtons">
+            <button class="button" data-branch="Terminal 21">Terminal 21</button>
+            <button class="button" data-branch="Centralworld">Centralworld</button>
+            <button class="button" data-branch="Central Ladprao">Central Ladprao</button>
+            <button class="button" data-branch="Fashion Island">Fashion Island</button>
+            <button class="button" data-branch="MEGABANGNA">MEGABANGNA</button>
+            <button class="button" data-branch="Siam Center">Siam Center</button>
+            <button class="button" data-branch="Siam Square">Siam Square</button>
+            <button class="button" data-branch="Emsphere">Emsphere</button>
+            <button class="button" data-branch="Central Pattaya">Central Pattaya</button>
+        </div>
+
+        <button class="button hidden" id="nextButton">Next</button>
+
+        <!-- เพิ่มปุ่มวันที่ 1-31 -->
+        <div class="button-group hidden" id="dayButtons">
+            <script>
+                for (let i = 1; i <= 31; i++) {
+                    document.write(`<button class="button" data-day="${i}">${i}</button>`);
+                }
+            </script><button class="button" data-day="1">1</button><button class="button" data-day="2">2</button><button class="button" data-day="3">3</button><button class="button" data-day="4">4</button><button class="button" data-day="5">5</button><button class="button" data-day="6">6</button><button class="button" data-day="7">7</button><button class="button" data-day="8">8</button><button class="button" data-day="9">9</button><button class="button" data-day="10">10</button><button class="button" data-day="11">11</button><button class="button" data-day="12">12</button><button class="button" data-day="13">13</button><button class="button" data-day="14">14</button><button class="button" data-day="15">15</button><button class="button" data-day="16">16</button><button class="button" data-day="17">17</button><button class="button" data-day="18">18</button><button class="button" data-day="19">19</button><button class="button" data-day="20">20</button><button class="button" data-day="21">21</button><button class="button" data-day="22">22</button><button class="button" data-day="23">23</button><button class="button" data-day="24">24</button><button class="button" data-day="25">25</button><button class="button" data-day="26">26</button><button class="button" data-day="27">27</button><button class="button" data-day="28">28</button><button class="button" data-day="29">29</button><button class="button" data-day="30">30</button><button class="button" data-day="31">31</button>
+        </div>
+
+        <!-- เพิ่มปุ่มเวลา 10:30-18:30 -->
+        <div class="button-group hidden" id="timeButtons">
+            <script>
+                function addTimeButtons() {
+                    let startHour = 10;
+                    let startMinute = 30;
+                    const endHour = 23;
+                    const endMinute = 0;
+
+                    while (startHour < endHour || (startHour === endHour && startMinute <= endMinute)) {
+                        let timeText = ('0' + startHour).slice(-2) + ':' + ('0' + startMinute).slice(-2);
+                        document.write(`<button class="button" data-time="${timeText}">${timeText}</button>`);
+
+                        startMinute += 30;
+                        if (startMinute === 60) {
+                            startMinute = 0;
+                            startHour++;
+                        }
+                    }
+                }
+
+                addTimeButtons();
+            </script><button class="button" data-time="10:30">10:30</button><button class="button" data-time="11:00">11:00</button><button class="button" data-time="11:30">11:30</button><button class="button" data-time="12:00">12:00</button><button class="button" data-time="12:30">12:30</button><button class="button" data-time="13:00">13:00</button><button class="button" data-time="13:30">13:30</button><button class="button" data-time="14:00">14:00</button><button class="button" data-time="14:30">14:30</button><button class="button" data-time="15:00">15:00</button><button class="button" data-time="15:30">15:30</button><button class="button" data-time="16:00">16:00</button><button class="button" data-time="16:30">16:30</button><button class="button" data-time="17:00">17:00</button><button class="button" data-time="17:30">17:30</button><button class="button" data-time="18:00">18:00</button><button class="button" data-time="18:30">18:30</button><button class="button" data-time="19:00">19:00</button><button class="button" data-time="19:30">19:30</button><button class="button" data-time="20:00">20:00</button><button class="button" data-time="20:30">20:30</button><button class="button" data-time="21:00">21:00</button><button class="button" data-time="21:30">21:30</button><button class="button" data-time="22:00">22:00</button><button class="button" data-time="22:30">22:30</button><button class="button" data-time="23:00">23:00</button>
+        </div>
+
+        <button class="button hidden" id="confirmButton">Confirm</button>
+        <input type="checkbox" id="inputField" placeholder="Click to activate">
+        <button class="button hidden" id="confirmBookingButton">Confirm Booking</button>
+    </div>
+
+
+    <script>
+        let selectedBranch = '';
+        let selectedDay = '';
+        let selectedTime = '';
+
+        function updateSummary() {
+            const summary = document.getElementById('summaryText');
+            summary.textContent = `เลือกสาขา: ${selectedBranch}, วันที่: ${selectedDay}, เวลา: ${selectedTime}`;
+        }
+
+        function clickButton(buttonId) {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.classList.add('clicked'); // เปลี่ยนสีเมื่อคลิก
+                button.classList.remove('hidden'); // แสดงปุ่มเมื่อคลิก
+                button.disabled = false; // ไม่ปิดปุ่มหลังจากคลิก
+                console.log(`Button "${buttonId}" clicked`);
+            } else {
+                console.error(`Button "${buttonId}" not found`);
+            }
+        }
+
+        document.getElementById('register').addEventListener('click', () => {
+            clickButton('register');
+            document.getElementById('branchButtons').classList.remove('hidden'); // แสดงปุ่มสาขา
+        });
+
+        document.getElementById('branchButtons').addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                selectedBranch = event.target.getAttribute('data-branch');
+                updateSummary(); // อัปเดตข้อความที่แสดง
+                console.log(`Selected branch: ${selectedBranch}`);
+                clickButton('nextButton'); // คลิกปุ่ม Next หลังเลือกสาขา
+            }
+        });
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+            document.getElementById('dayButtons').classList.remove('hidden'); // แสดงปุ่มวันที่
+        });
+
+        document.getElementById('dayButtons').addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                selectedDay = event.target.getAttribute('data-day');
+                updateSummary(); // อัปเดตข้อความที่แสดง
+                console.log(`Selected day: ${selectedDay}`);
+                document.getElementById('timeButtons').classList.remove('hidden'); // แสดงปุ่มเวลา
+            }
+        });
+
+        document.getElementById('timeButtons').addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                selectedTime = event.target.getAttribute('data-time');
+                updateSummary(); // อัปเดตข้อความที่แสดง
+                console.log(`Selected time: ${selectedTime}`);
+                clickButton('confirmButton'); // คลิกปุ่ม Confirm หลังเลือกเวลา
+            }
+        });
+
+        document.getElementById('confirmButton').addEventListener('click', () => {
+            const checkbox = document.getElementById('inputField');
+            checkbox.checked = !checkbox.checked; // สลับสถานะของ checkbox
+            console.log(`Checkbox checked: ${checkbox.checked}`);
+            clickButton('confirmBookingButton'); // คลิกปุ่ม Confirm Booking
+        });
+    </script>
+
+
+</body></html>
